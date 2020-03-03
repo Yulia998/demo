@@ -8,6 +8,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,5 +48,13 @@ public class DemoController {
         File file = new File("createdocument2.docx");
         file.delete();
         return ResponseEntity.ok("delete");
+    }
+
+    @RequestMapping(
+            value = "/person" , produces = {"application/json", "application/xml"})
+    public Person person() {
+        Person person2 = new Person("Nick", "Yan");
+        Person person = new Person("Ann", "Sm");
+        return person;
     }
 }
